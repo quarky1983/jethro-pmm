@@ -38,5 +38,17 @@ services:
       PMA_HOST: mariadb
       PMA_ARBITRARY: 1
 
+  smtp4dev:
+    container_name: jethro-smtp4dev
+    image: rnwood/smtp4dev
+    restart: always
+    ports:
+      - "8082:80"     # Web UI
+      - "2525:25"     # SMTP server port
+    volumes:
+      - smtpdata:/smtp4dev
+
 volumes:
   dbdata:
+  smtpdata:
+  
