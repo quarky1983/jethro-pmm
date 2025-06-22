@@ -1,0 +1,42 @@
+name: jethro-pmm
+
+services:
+  app:
+    container_name: jethro-app
+    build:
+      context: ..
+      dockerfile: docker/app/Dockerfile
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ../:/var/www/html
+    depends_on:
+      - mariadb
+
+  mariadb:
+    container_name: jethro-mariadb
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: pmm
+      MYSQL_USER: pmmuser
+      MYSQL_PASSWORD: secret
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ../db-init:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    container_name: jethro-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    platform: linux/amd64
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_ARBITRARY: 1
+
+volumes:
+  dbdata:

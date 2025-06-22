@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON pmm.* TO 'pmmuser'@'%' IDENTIFIED BY 'secret';
+FLUSH PRIVILEGES;
