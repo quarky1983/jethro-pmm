@@ -1,0 +1,48 @@
+# Git files
+.git
+.gitignore
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if any)
+node_modules
+
+# Composer vendor (should be installed in container)
+vendor
+
+# Configuration files that shouldn't be in containers
+conf.php.local
+conf.php.sample
+
+# Documentation
+*.md
+docs/
+
+# Development scripts
+docker/dev.sh
+
+# Custom reports (user data)
+custom_reports/*
+
+# Uploaded files (user data)  
+files/*
+
+# Database dumps
+*.sql
+*.dump
